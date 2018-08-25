@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Cliente.Models.Passagens>
+
+@{
+    ViewBag.Title = "MinhasPassagens";
+}
+
+<h2>Minhas Passagens</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Data da Compra
+        </th>
+        <th>
+            Cidade Origem
+        </th>
+        <th>
+            Cidade Destino
+        </th>
+        <th>
+            Data/Hora Saida
+        </th>
+        <th>
+            Data/Hora Chegada
+        </th>
+        <th>
+            Valor Passagem
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.dtCompra)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.voo.cidadeOrigem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.voo.cidadeDestino)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.voo.dataSaida)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.voo.dataChegada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.voo.valorPassagem)
+        </td>
+        <td>
+            @Html.ActionLink("Devolver Passagem", "DevolverPassagem", item)
+        </td>
+    </tr>
+}
+
+</table>

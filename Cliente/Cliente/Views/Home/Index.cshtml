@@ -1,0 +1,103 @@
+﻿@if (ViewBag.Encontrados != String.Empty)
+{
+    <script type="text/javascript">
+        toastr["success"]("@ViewBag.Encontrados", "Aviso!");
+    </script>
+}
+
+@model IEnumerable<Cliente.Models.Voos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Voos Disponíveis</h2>
+
+<p>
+    @using (Html.BeginForm("PesquisarVoo", "Home", FormMethod.Post))
+    {
+        @Html.Label("", htmlAttributes: new { @class = "control-label" })
+        {
+            <table>
+                <tr>
+                    <th>
+                        Cidade Origem
+                    </th>
+                    <th>
+                        Cidade Destino
+                    </th>
+                    <th>
+                        Data Saida
+                    </th>
+                    <th></th>
+                </tr>
+
+                <tr>
+                    <td>
+                        <input type="text" placeholder="Cidade de Origem" id="txtCidadeOrigem" name="txtCidadeOrigem" class="form-control" />
+                    </td>
+                    <td>
+                        <input type="text" placeholder="Cidade de Destino" id="txtCidadeDestino" name="txtCidadeDestino" class="form-control" />
+                    </td>
+                    <td>
+                        <input type="date" value="2010-01-01" id="dtSaida" name="dtSaida" class="form-control" />
+                    </td>
+                    <td>
+                        <input type="submit" value="Consultar" class="btn btn-default" />
+                    </td>
+                </tr>
+            </table>
+        }
+    }
+</p>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            Cidade Origem
+        </th>
+        <th>
+            Cidade Destino
+        </th>
+        <th>
+            Data/Hora Saida
+        </th>
+        <th>
+            Data/Hora Chegada
+        </th>
+        <th>
+            Assentos Disponíveis
+        </th>
+        <th>
+            Valor Passagem
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.cidadeOrigem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cidadeDestino)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dataSaida)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dataChegada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.qtdAssentos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.valorPassagem)
+        </td>
+        <td>
+            @Html.ActionLink("Comprar Passagem", "VerificarCartao", item)
+        </td>
+    </tr>
+}
+
+</table>

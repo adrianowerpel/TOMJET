@@ -1,0 +1,93 @@
+﻿@model Cliente.Models.Voos
+
+@{
+    ViewBag.Title = "VerificarCartao";
+}
+
+<h2>Detalhes do Voo</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cidadeOrigem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cidadeOrigem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cidadeDestino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cidadeDestino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dataSaida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dataSaida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dataChegada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dataChegada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qtdAssentos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qtdAssentos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valorPassagem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valorPassagem)
+        </dd>
+
+    </dl>
+</div>
+
+<hr/>
+
+<h3>Verificação do Cartão</h3>
+
+<p>
+    
+    @using (Html.BeginForm("ComprarPassagem", "Home", FormMethod.Post))
+    {
+        @Html.Label("", htmlAttributes: new { @class = "control-label" })
+        {
+            <table>
+                <tr>
+                    <th>
+                        Digite o Número do Cartão
+                    </th>
+                    <th></th>
+                </tr>
+
+                <tr>
+                    <td>
+                        <input type="text" placeholder="Num. Cartao" id="txtCartao" name="txtCartao" class="form-control" />
+                    </td>
+                    <td>
+                        <input type="submit" value="Verificar" class="btn btn-success" />
+                    </td>
+                </tr>
+            </table>
+        }
+    }
+
+</p>
